@@ -122,3 +122,17 @@ func TestListCurMultipleMessages(t *testing.T) {
 		}
 	}
 }
+
+func TestDeleteMessages(t *testing.T) {
+	listing, err := maildir.List("cur")
+	if err != nil {
+		t.Fatalf(fmt.Sprintf("failed to get messages listing. got error: %s", err))
+	}
+
+	for _, v := range listing {
+		err = maildir.Delete(v.Key())
+		if err != nil {
+			t.Fatalf(fmt.Sprintf("failed to delete messages. got error: %s", err))
+		}
+	}
+}

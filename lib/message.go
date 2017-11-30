@@ -58,14 +58,14 @@ func (m *Message) filename() string {
 	return fmt.Sprintf("%s%c%s", m.unqiueName, colon, m.info)
 }
 
-// key returns the key to identify the message
-func (m *Message) key() string {
+// Key returns the key to identify the message
+func (m *Message) Key() string {
 	return path.Join(m.dir, m.filename())
 }
 
 // path returns the full path to the message
 func (m *Message) path() string {
-	return path.Join(m.maildir, m.key())
+	return path.Join(m.maildir, m.Key())
 }
 
 // oldPath returns the old full path to the message
@@ -76,7 +76,7 @@ func (m *Message) oldPath() string {
 // rename the message. Returns the new key if successful
 func (m *Message) rename(newDir string, newInfo string) (string, error) {
 	// Save the old key so we can revert to the old state
-	m.oldKey = m.key()
+	m.oldKey = m.Key()
 
 	// Set the new state
 	m.dir = newDir
@@ -95,7 +95,7 @@ func (m *Message) rename(newDir string, newInfo string) (string, error) {
 		}
 	}
 	m.oldKey = ""
-	return m.key(), nil
+	return m.Key(), nil
 }
 
 // Write will write data to disk. only work with messages which haven't been written to disk.

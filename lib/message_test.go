@@ -218,9 +218,9 @@ func TestBadMessagePathNotProcessed(t *testing.T) {
 }
 
 func TestBadMessagePathResetMessageKey(t *testing.T) {
-	oldKey := msg.key()
+	oldKey := msg.Key()
 	msg.Process()
-	if oldKey != msg.key() {
+	if oldKey != msg.Key() {
 		t.Fatalf("message key not getting reset")
 	}
 }

@@ -84,3 +84,8 @@ func (m *Maildir) getDirListing(dir string) ([]string, error) {
 	}
 	return filePaths, err
 }
+
+// Delete a message by key
+func (m *Maildir) Delete(key string) error {
+	return m.Get(key).Destroy()
+}
