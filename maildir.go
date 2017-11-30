@@ -1,9 +1,10 @@
 package maildir
 
 import (
-	"maildir/lib"
 	"os"
 	"path"
+
+	"github.com/amalfra/maildir/lib"
 )
 
 // Maildir implements maildir format and it's operations

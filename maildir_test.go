@@ -2,10 +2,11 @@ package maildir
 
 import (
 	"fmt"
-	"maildir/lib"
 	"os"
 	"path"
 	"testing"
+
+	"github.com/amalfra/maildir/lib"
 )
 
 var mailDir string
