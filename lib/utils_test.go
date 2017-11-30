@@ -1,4 +1,4 @@
-package maildir
+package lib
 
 import (
 	"fmt"
