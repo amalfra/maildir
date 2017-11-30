@@ -73,3 +73,52 @@ func TestListNewOneMessage(t *testing.T) {
 		}
 	}
 }
+
+func TestListNewMultipleMessage(t *testing.T) {
+	TestAdd(t)
+	listing, err := maildir.List("new")
+	if err != nil {
+		t.Fatalf(fmt.Sprintf("failed to get messages listing. got error: %s", err))
+	}
+
+	for _, v := range listing {
+		fileData, err := v.GetData()
+		if err != nil {
+			t.Fatalf(fmt.Sprintf("failed to read messages. got error: %s", err))
+		}
+		if fileData != testData {
+			t.Fatalf("incorrect data saved in message")
+		}
+	}
+}
+
+func TestProcessNewMessages(t *testing.T) {
+	listing, err := maildir.List("cur")
+	if err != nil {
+		t.Fatalf(fmt.Sprintf("failed to get messages listing. got error: %s", err))
+	}
+
+	for _, v := range listing {
+		_, err := v.Process()
+		if err != nil {
+			t.Fatalf(fmt.Sprintf("failed to process messages. got error: %s", err))
+		}
+	}
+}
+
+func TestListCurMultipleMessages(t *testing.T) {
+	listing, err := maildir.List("cur")
+	if err != nil {
+		t.Fatalf(fmt.Sprintf("failed to get messages listing. got error: %s", err))
+	}
+
+	for _, v := range listing {
+		fileData, err := v.GetData()
+		if err != nil {
+			t.Fatalf(fmt.Sprintf("failed to read messages. got error: %s", err))
+		}
+		if fileData != testData {
+			t.Fatalf("incorrect data saved in message")
+		}
+	}
+}
