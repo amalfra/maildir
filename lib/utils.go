@@ -12,6 +12,11 @@ func getCounter() int {
 	return count()
 }
 
+// resetCounter will reset incrementing counter's value
+func resetCounter() {
+	counter = 0
+}
+
 // count will increment the atomic counter and return its value
 func count() int {
 	mu.Lock()
