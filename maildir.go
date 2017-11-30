@@ -52,7 +52,7 @@ func (m *Maildir) Get(key string) *lib.Message {
 	return lib.LoadMessage(m.path, key)
 }
 
-// List returns an arry of messages from new or cur directory, sorted by key
+// List returns an array of messages from new or cur directory, sorted by key
 func (m *Maildir) List(dir string) (map[string]*lib.Message, error) {
 	if !lib.StringInSlice(dir, lib.Subdirs) {
 		return nil, errors.New("dir must be :new, :cur, or :tmp")

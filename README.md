@@ -6,6 +6,83 @@ maildir
 
 A go package for reading and writing messages in the maildir format.
 
+> The Maildir e-mail format is a common way of storing e-mail messages, where each message is kept in a separate file with a unique name, and each folder is a directory. The local filesystem handles file locking as messages are added, moved and deleted. A major design goal of Maildir is to eliminate program code having to handle locking, which is often difficult.
+
+Refer http://cr.yp.to/proto/maildir.html and http://en.wikipedia.org/wiki/Maildir
+
+## Installation
+
+You can download the package using
+
+``` go
+go get github.com/amalfra/maildir
+```
+
+## Usage
+
+Next, import the package
+
+``` go
+import (
+  "github.com/amalfra/maildir"
+)
+```
+
+#### Create a maildir in /home/amal/mail
+``` go
+myMaildir := maildir.NewMaildir("/home/amal/mail", true) // automatically creates tmp, new, and cur dirs
+```
+The second paramter specified whether to create the required sub directories(tmp, new, and cur). If you don't want to create it(incase you have already created it) do following:
+``` go
+myMaildir := maildir.NewMaildir("/home/amal/mail", false)
+```
+
+#### Add a new message
+This creates a new file with the contents "foo"; returns the Message sruct reference. Messages are written to the tmp dir then moved to new.
+``` go
+message, err := myMaildir.Add("foo")
+```
+
+#### List new messages
+``` go
+mailList, err := myMaildir.List("new")
+```
+This will return a map of messages by key, sorted by key
+
+#### List current messages
+``` go
+mailList, err := myMaildir.List("cur")
+```
+This will return a map of messages by key, sorted by key
+
+#### Find the message using key
+``` go
+message := maildir.Get(key)
+```
+
+#### Delete the message from disk by key
+``` go
+err := maildir.Delete(key)
+```
+
+**Below are the methods that are available on Message instance**
+
+#### Get the key used to uniquely identify the message
+``` go
+key := message.Key()
+```
+
+#### Load the message content from file
+``` go
+data, err := message.GetData()
+```
+
+#### Process message - move the message from "new" to "cur"
+This is usaully done to indicate that some process has retrieved the message.
+``` go
+key, err := message.Process("new")
+```
+
 ## Development
 
 Questions, problems or suggestions? Please post them on the [issue tracker](https://github.com/amalfra/maildir/issues).
