@@ -24,3 +24,13 @@ func count() int {
 	mu.Unlock()
 	return counter
 }
+
+// StringInSlice will return whether string exists in given slice or not
+func StringInSlice(a string, list []string) bool {
+	for _, b := range list {
+		if b == a {
+			return true
+		}
+	}
+	return false
+}

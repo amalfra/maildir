@@ -33,12 +33,16 @@ func NewMessage(maildir string) (*Message, error) {
 
 // parseKey will set dir, unqiueName, info based on the key
 func (m *Message) parseKey(key string) {
+	// remove leading /
+	key = strings.Trim(key, string(os.PathSeparator))
 	parts := strings.Split(key, string(os.PathSeparator))
 	m.dir = parts[0]
 	filename := parts[1]
 	parts = strings.Split(filename, string(colon))
 	m.unqiueName = parts[0]
-	m.info = parts[1]
+	if len(parts) > 1 {
+		m.info = parts[1]
+	}
 }
 
 // LoadMessage will populate message object by loading info from passed key
