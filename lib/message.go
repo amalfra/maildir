@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 	"strings"
 )
 
@@ -60,17 +60,17 @@ func (m *Message) filename() string {
 
 // Key returns the key to identify the message
 func (m *Message) Key() string {
-	return path.Join(m.dir, m.filename())
+	return filepath.Join(m.dir, m.filename())
 }
 
 // path returns the full path to the message
 func (m *Message) path() string {
-	return path.Join(m.maildir, m.Key())
+	return filepath.Join(m.maildir, m.Key())
 }
 
 // oldPath returns the old full path to the message
 func (m *Message) oldPath() string {
-	return path.Join(m.maildir, m.oldKey)
+	return filepath.Join(m.maildir, m.oldKey)
 }
 
 // rename the message. Returns the new key if successful
