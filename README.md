@@ -1,5 +1,6 @@
 maildir
 =======
+[![GitHub release](https://img.shields.io/github/release/amalfra/maildir.svg)](https://github.com/amalfra/maildir/releases)
 [![Build Status](https://travis-ci.org/amalfra/maildir.svg?branch=master)](https://travis-ci.org/amalfra/maildir)
 [![GoDoc](https://godoc.org/github.com/amalfra/maildir?status.svg)](https://godoc.org/github.com/amalfra/maildir)
 [![Go Report Card](https://goreportcard.com/badge/github.com/amalfra/maildir)](https://goreportcard.com/report/github.com/amalfra/maildir)
