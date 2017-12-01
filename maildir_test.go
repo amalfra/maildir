@@ -36,8 +36,8 @@ func TestPathProperty(t *testing.T) {
 }
 
 func TestDirectoriesCreated(t *testing.T) {
-	for i := 0; i < len(lib.Subdirs); i++ {
-		if _, err := os.Stat(path.Join(mailDir, lib.Subdirs[i])); os.IsNotExist(err) {
+	for _, subDir := range lib.Subdirs {
+		if _, err := os.Stat(path.Join(mailDir, subDir)); os.IsNotExist(err) {
 			t.Fatalf("required sub directories not created")
 		}
 	}

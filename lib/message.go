@@ -34,7 +34,7 @@ func NewMessage(maildir string) (*Message, error) {
 // parseKey will set dir, unqiueName, info based on the key
 func (m *Message) parseKey(key string) {
 	// remove leading /
-	key = strings.Trim(key, string(os.PathSeparator))
+	key = strings.TrimPrefix(key, string(os.PathSeparator))
 	parts := strings.Split(key, string(os.PathSeparator))
 	m.dir = parts[0]
 	filename := parts[1]
