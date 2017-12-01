@@ -3,7 +3,7 @@ package maildir
 import (
 	"fmt"
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/amalfra/maildir/lib"
@@ -37,7 +37,7 @@ func TestPathProperty(t *testing.T) {
 
 func TestDirectoriesCreated(t *testing.T) {
 	for _, subDir := range lib.Subdirs {
-		if _, err := os.Stat(path.Join(mailDir, subDir)); os.IsNotExist(err) {
+		if _, err := os.Stat(filepath.Join(mailDir, subDir)); os.IsNotExist(err) {
 			t.Fatalf("required sub directories not created")
 		}
 	}

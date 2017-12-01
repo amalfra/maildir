@@ -3,7 +3,6 @@ package maildir
 import (
 	"errors"
 	"os"
-	"path"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -29,7 +28,7 @@ func NewMaildir(path string, create bool) *Maildir {
 // createDirectories will the sub directories required by maildir
 func (m *Maildir) createDirectories() {
 	for _, subDir := range lib.Subdirs {
-		os.MkdirAll(path.Join(m.path, subDir), os.ModePerm)
+		os.MkdirAll(filepath.Join(m.path, subDir), os.ModePerm)
 	}
 }
 
@@ -76,7 +75,7 @@ func (m *Maildir) List(dir string) (map[string]*lib.Message, error) {
 // getDirListing returns an array of keys in dir
 func (m *Maildir) getDirListing(dir string) ([]string, error) {
 	filter := "*"
-	searchPath := path.Join(m.path, dir, filter)
+	searchPath := filepath.Join(m.path, dir, filter)
 	filePaths, err := filepath.Glob(searchPath)
 	// remove maildir path so that only key remains
 	for i, filePath := range filePaths {

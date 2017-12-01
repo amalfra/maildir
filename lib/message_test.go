@@ -3,7 +3,7 @@ package lib
 import (
 	"fmt"
 	"os"
-	"path"
+	"path/filepath"
 	"regexp"
 	"testing"
 )
@@ -22,7 +22,7 @@ func cleanMaildir() {
 
 func createMaildir() {
 	for _, subDir := range Subdirs {
-		err := os.MkdirAll(path.Join(mailDir, subDir), os.ModePerm)
+		err := os.MkdirAll(filepath.Join(mailDir, subDir), os.ModePerm)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Failed to create directory structure for maildir folder")
 			os.Exit(1)
