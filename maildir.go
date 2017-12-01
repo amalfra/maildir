@@ -28,8 +28,8 @@ func NewMaildir(path string, create bool) *Maildir {
 
 // createDirectories will the sub directories required by maildir
 func (m *Maildir) createDirectories() {
-	for i := 0; i < len(lib.Subdirs); i++ {
-		os.MkdirAll(path.Join(m.path, lib.Subdirs[i]), os.ModePerm)
+	for _, subDir := range lib.Subdirs {
+		os.MkdirAll(path.Join(m.path, subDir), os.ModePerm)
 	}
 }
 
@@ -66,8 +66,8 @@ func (m *Maildir) List(dir string) (map[string]*lib.Message, error) {
 
 	// map keys to message objects
 	keyMap := make(map[string]*lib.Message)
-	for i := 0; i < len(keys); i++ {
-		keyMap[keys[i]] = m.Get(keys[i])
+	for _, key := range keys {
+		keyMap[key] = m.Get(key)
 	}
 
 	return keyMap, nil
@@ -79,8 +79,8 @@ func (m *Maildir) getDirListing(dir string) ([]string, error) {
 	searchPath := path.Join(m.path, dir, filter)
 	filePaths, err := filepath.Glob(searchPath)
 	// remove maildir path so that only key remains
-	for i := 0; i < len(filePaths); i++ {
-		filePaths[i] = strings.Replace(filePaths[i], m.path, "", 1)
+	for i, filePath := range filePaths {
+		filePaths[i] = strings.TrimPrefix(filePath, m.path)
 	}
 	return filePaths, err
 }
