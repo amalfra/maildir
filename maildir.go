@@ -16,12 +16,17 @@ type Maildir struct {
 }
 
 // NewMaildir will create new maildir at specified path
-func NewMaildir(path string, create bool) *Maildir {
+func NewMaildir(path string) *Maildir {
 	maildir := new(Maildir)
 	maildir.path = path
-	if create {
+
+	_, dCur := os.Stat(path + "/cur")
+	_, dTmp := os.Stat(path + "/tmp")
+	_, dNew := os.Stat(path + "/new")
+	if os.IsNotExist(dCur) || os.IsNotExist(dTmp) || os.IsNotExist(dNew) {
 		maildir.createDirectories()
 	}
+
 	return maildir
 }
 
