@@ -31,15 +31,14 @@ import (
 
 #### Create a maildir in /home/amal/mail
 ``` go
-myMaildir := maildir.NewMaildir("/home/amal/mail", true) // automatically creates tmp, new, and cur dirs
-```
-The second paramter specified whether to create the required sub directories(tmp, new, and cur). If you don't want to create it(incase you have already created it) do following:
-``` go
-myMaildir := maildir.NewMaildir("/home/amal/mail", false)
+myMaildir := maildir.NewMaildir("/home/amal/mail")
 ```
 
+This command automatically creates the standard Maildir directories - `cur`,
+`new`, and `tmp` - if they do not exist.
+
 #### Add a new message
-This creates a new file with the contents "foo"; returns the Message sruct reference. Messages are written to the tmp dir then moved to new.
+This creates a new file with the contents "foo"; returns the Message struct reference. Messages are written to the tmp dir then moved to new.
 ``` go
 message, err := myMaildir.Add("foo")
 ```

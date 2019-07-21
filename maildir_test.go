@@ -26,7 +26,7 @@ func init() {
 	testData = "foo"
 	cleanMaildir()
 
-	maildir = NewMaildir(mailDir, true)
+	maildir = NewMaildir(mailDir)
 }
 
 func TestPathProperty(t *testing.T) {
