@@ -2,8 +2,8 @@ maildir
 =======
 [![GitHub release](https://img.shields.io/github/release/amalfra/maildir.svg)](https://github.com/amalfra/maildir/releases)
 ![Build Status](https://github.com/amalfra/maildir/actions/workflows/test.yml/badge.svg?branch=main)
-[![GoDoc](https://godoc.org/github.com/amalfra/maildir?status.svg)](https://godoc.org/github.com/amalfra/maildir)
-[![Go Report Card](https://goreportcard.com/badge/github.com/amalfra/maildir)](https://goreportcard.com/report/github.com/amalfra/maildir)
+[![GoDoc](https://godoc.org/github.com/amalfra/maildir/v2?status.svg)](https://godoc.org/github.com/amalfra/maildir/v2)
+[![Go Report Card](https://goreportcard.com/badge/github.com/amalfra/maildir/v2)](https://goreportcard.com/report/github.com/amalfra/maildir/v2)
 
 A go package for reading and writing messages in the maildir format.
 
@@ -16,7 +16,7 @@ Refer http://cr.yp.to/proto/maildir.html and http://en.wikipedia.org/wiki/Maildi
 You can download the package using
 
 ``` go
-go get github.com/amalfra/maildir
+go get github.com/amalfra/maildir/v2
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ Next, import the package
 
 ``` go
 import (
-  "github.com/amalfra/maildir"
+  "github.com/amalfra/maildir/v2"
 )
 ```
 
