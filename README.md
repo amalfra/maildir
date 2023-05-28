@@ -4,6 +4,7 @@ maildir
 ![Build Status](https://github.com/amalfra/maildir/actions/workflows/test.yml/badge.svg?branch=main)
 [![GoDoc](https://godoc.org/github.com/amalfra/maildir/v3?status.svg)](https://godoc.org/github.com/amalfra/maildir/v3)
 [![Go Report Card](https://goreportcard.com/badge/github.com/amalfra/maildir/v3)](https://goreportcard.com/report/github.com/amalfra/maildir/v3)
+[![Coverage Status](https://coveralls.io/repos/github/amalfra/maildir/badge.svg?branch=main)](https://coveralls.io/github/amalfra/maildir?branch=main)
 
 A go package for reading and writing messages in the maildir format.
 
