@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/amalfra/maildir/v2/lib"
+	"github.com/amalfra/maildir/v3/lib"
 )
 
 var mailDir string
