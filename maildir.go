@@ -7,7 +7,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/amalfra/maildir/v3/lib"
+	"github.com/amalfra/maildir/v4/lib"
 )
 
 // Maildir implements maildir format and it's operations
